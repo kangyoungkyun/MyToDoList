@@ -72,14 +72,17 @@ class TodoTableViewController: UITableViewController {
     
     
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // 할일 추가할때 코어데이터 초기화 시켜준다.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+      
+        if let _ = sender as? UIBarButtonItem, let vc = segue.destination as? AddTodoViewController{
+            vc.managedContext = coreDataStack.managedContext
+        }
+        
     }
-    */
+ 
 
 }
