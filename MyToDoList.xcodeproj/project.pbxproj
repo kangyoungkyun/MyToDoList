@@ -13,6 +13,8 @@
 		525DA6212084C16900E04244 /* MyToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 525DA61F2084C16900E04244 /* MyToDoList.xcdatamodeld */; };
 		525DA6232084C16900E04244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 525DA6222084C16900E04244 /* Assets.xcassets */; };
 		525DA6262084C16900E04244 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 525DA6242084C16900E04244 /* LaunchScreen.storyboard */; };
+		525DA62E2084CAD200E04244 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525DA62D2084CAD200E04244 /* AddTodoViewController.swift */; };
+		525DA6302084CAE400E04244 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525DA62F2084CAE400E04244 /* TodoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		525DA6222084C16900E04244 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		525DA6252084C16900E04244 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		525DA6272084C16900E04244 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		525DA62D2084CAD200E04244 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
+		525DA62F2084CAE400E04244 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		525DA6172084C16900E04244 /* MyToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				525DA62D2084CAD200E04244 /* AddTodoViewController.swift */,
+				525DA62F2084CAE400E04244 /* TodoTableViewController.swift */,
 				525DA6182084C16900E04244 /* AppDelegate.swift */,
 				525DA61A2084C16900E04244 /* ViewController.swift */,
 				525DA61C2084C16900E04244 /* Main.storyboard */,
@@ -139,6 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525DA62E2084CAD200E04244 /* AddTodoViewController.swift in Sources */,
+				525DA6302084CAE400E04244 /* TodoTableViewController.swift in Sources */,
 				525DA61B2084C16900E04244 /* ViewController.swift in Sources */,
 				525DA6192084C16900E04244 /* AppDelegate.swift in Sources */,
 				525DA6212084C16900E04244 /* MyToDoList.xcdatamodeld in Sources */,
