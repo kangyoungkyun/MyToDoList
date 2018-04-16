@@ -7,9 +7,12 @@
 //
 
 import UIKit
-
+import CoreData
 class AddTodoViewController: UIViewController {
 
+    //properties
+    var managedContext: NSManagedObjectContext!
+    
     //텍스트뷰 객체
     @IBOutlet weak var textView: UITextView!
     //세그먼트 객체
@@ -50,7 +53,24 @@ class AddTodoViewController: UIViewController {
         textView.resignFirstResponder()
     }
     
+    //저장
     @IBAction func done(_ sender: UIButton) {
+        guard let title = textView.text, !title.isEmpty else{
+            return
+        }
+        
+        let todo = Todo(context: managedContext)
+        todo.title = title
+        todo.priotity = Int16(segmentedControl.selectedSegmentIndex)
+        todo.date = Date()
+        
+        do {
+            try managedContext.save()
+            dismiss(animated: true, completion: nil)
+            textView.resignFirstResponder()
+        } catch  {
+            print("error saving todo: \(error)")
+        }
     }
     
 }

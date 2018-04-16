@@ -7,12 +7,31 @@
 //
 
 import UIKit
-
+import CoreData
 class TodoTableViewController: UITableViewController {
 
+    //propertis
+    var resultsController: NSFetchedResultsController<Todo>!
+    let coreDataStack = CoredataStack()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //요청
+        let request: NSFetchRequest<Todo> = Todo.fetchRequest()
+        let sortDescriptors = NSSortDescriptor(key: "date", ascending: true)
+        
+        
+        //초기화
+        request.sortDescriptors = [sortDescriptors]
+        resultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: coreDataStack.managedContext , sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try resultsController.performFetch()
+        } catch  {
+            print("perform fetch error : \(error)")
+        }
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "todoCell")
     }
 
@@ -20,12 +39,13 @@ class TodoTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return resultsController.sections?[section].objects?.count ?? 0
     }
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath)
-
+        let todo = resultsController.object(at: indexPath)
+        cell.textLabel?.text = todo.title
         return cell
     }
  
