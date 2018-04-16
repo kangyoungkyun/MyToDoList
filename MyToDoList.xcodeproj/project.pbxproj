@@ -17,6 +17,8 @@
 		525DA6302084CAE400E04244 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525DA62F2084CAE400E04244 /* TodoTableViewController.swift */; };
 		525DA6322084DB3100E04244 /* ic_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 525DA6312084DB3100E04244 /* ic_delete.png */; };
 		525DA6342084DB3B00E04244 /* ic_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 525DA6332084DB3B00E04244 /* ic_done.png */; };
+		525DA63B2084DBEA00E04244 /* Todos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 525DA6392084DBEA00E04244 /* Todos.xcdatamodeld */; };
+		525DA63D2084DC9A00E04244 /* CoredataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525DA63C2084DC9A00E04244 /* CoredataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		525DA62F2084CAE400E04244 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 		525DA6312084DB3100E04244 /* ic_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_delete.png; sourceTree = "<group>"; };
 		525DA6332084DB3B00E04244 /* ic_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_done.png; sourceTree = "<group>"; };
+		525DA63A2084DBEA00E04244 /* Todos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todos.xcdatamodel; sourceTree = "<group>"; };
+		525DA63C2084DC9A00E04244 /* CoredataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,12 +68,9 @@
 		525DA6172084C16900E04244 /* MyToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				525DA6332084DB3B00E04244 /* ic_done.png */,
-				525DA6312084DB3100E04244 /* ic_delete.png */,
-				525DA62D2084CAD200E04244 /* AddTodoViewController.swift */,
-				525DA62F2084CAE400E04244 /* TodoTableViewController.swift */,
-				525DA6182084C16900E04244 /* AppDelegate.swift */,
-				525DA61A2084C16900E04244 /* ViewController.swift */,
+				525DA6382084DBCE00E04244 /* CoreData */,
+				525DA6372084DBBA00E04244 /* Pic */,
+				525DA6362084DBAF00E04244 /* VC */,
 				525DA61C2084C16900E04244 /* Main.storyboard */,
 				525DA6222084C16900E04244 /* Assets.xcassets */,
 				525DA6242084C16900E04244 /* LaunchScreen.storyboard */,
@@ -77,6 +78,35 @@
 				525DA61F2084C16900E04244 /* MyToDoList.xcdatamodeld */,
 			);
 			path = MyToDoList;
+			sourceTree = "<group>";
+		};
+		525DA6362084DBAF00E04244 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				525DA62D2084CAD200E04244 /* AddTodoViewController.swift */,
+				525DA62F2084CAE400E04244 /* TodoTableViewController.swift */,
+				525DA6182084C16900E04244 /* AppDelegate.swift */,
+				525DA61A2084C16900E04244 /* ViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		525DA6372084DBBA00E04244 /* Pic */ = {
+			isa = PBXGroup;
+			children = (
+				525DA6332084DB3B00E04244 /* ic_done.png */,
+				525DA6312084DB3100E04244 /* ic_delete.png */,
+			);
+			path = Pic;
+			sourceTree = "<group>";
+		};
+		525DA6382084DBCE00E04244 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				525DA6392084DBEA00E04244 /* Todos.xcdatamodeld */,
+				525DA63C2084DC9A00E04244 /* CoredataStack.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +184,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				525DA62E2084CAD200E04244 /* AddTodoViewController.swift in Sources */,
+				525DA63B2084DBEA00E04244 /* Todos.xcdatamodeld in Sources */,
+				525DA63D2084DC9A00E04244 /* CoredataStack.swift in Sources */,
 				525DA6302084CAE400E04244 /* TodoTableViewController.swift in Sources */,
 				525DA61B2084C16900E04244 /* ViewController.swift in Sources */,
 				525DA6192084C16900E04244 /* AppDelegate.swift in Sources */,
@@ -351,6 +383,16 @@
 			);
 			currentVersion = 525DA6202084C16900E04244 /* MyToDoList.xcdatamodel */;
 			path = MyToDoList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		525DA6392084DBEA00E04244 /* Todos.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				525DA63A2084DBEA00E04244 /* Todos.xcdatamodel */,
+			);
+			currentVersion = 525DA63A2084DBEA00E04244 /* Todos.xcdatamodel */;
+			path = Todos.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
