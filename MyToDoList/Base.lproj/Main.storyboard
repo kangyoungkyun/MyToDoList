@@ -67,23 +67,23 @@
         <scene sceneID="Hnj-Si-S4X">
             <objects>
                 <viewController id="NhI-1l-1Ac" customClass="AddTodoViewController" customModule="MyToDoList" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jgY-B1-LaM">
+                    <view key="view" alpha="0.75" contentMode="scaleToFill" id="jgY-B1-LaM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vea-J0-zmW">
                                 <rect key="frame" x="16" y="35" width="343" height="267"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작은일도 꾸준히 매일하면 위대해진다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfR-uh-2fR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작은일도 매일하면 위대해진다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfR-uh-2fR">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="aOO-kj-1Be"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
-                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="0.94820205479999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Khp-78-q2x">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="시작해보세요 :)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Khp-78-q2x">
                                         <rect key="frame" x="0.0" y="25" width="343" height="242"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -102,7 +102,7 @@
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pxv-Ky-21f">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="29"/>
                                         <segments>
-                                            <segment title="일반"/>
+                                            <segment title="보통"/>
                                             <segment title="중요"/>
                                             <segment title="매우중요"/>
                                         </segments>
@@ -113,7 +113,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUV-Rg-uBy">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
-                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.95093107876712324" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="AEC-Ur-LMp"/>
                                                 </constraints>
@@ -132,7 +132,7 @@
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="245" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xb-h6-ZBL">
                                                 <rect key="frame" x="-16" y="0.0" width="0.0" height="34"/>
-                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.94820205479452058" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="완료">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -151,7 +151,8 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.7946521552526381" green="0.93547368049621582" blue="0.71431652187565386" alpha="0.66243043664383561" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.63130096346064846" green="0.55590416171998946" blue="0.91590656725888331" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MWb-w0-f2s" firstAttribute="trailing" secondItem="Vea-J0-zmW" secondAttribute="trailing" constant="16" id="9aN-tf-bKh"/>
                             <constraint firstItem="Vea-J0-zmW" firstAttribute="height" secondItem="jgY-B1-LaM" secondAttribute="height" multiplier="0.4" id="Ejz-Em-ckp"/>

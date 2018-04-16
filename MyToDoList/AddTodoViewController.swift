@@ -26,7 +26,8 @@ class AddTodoViewController: UIViewController {
                                                selector: #selector(keyboardWillShow(with:)),
                                                name: .UIKeyboardWillShow,
                                                object: nil)
-        
+        //키보드 자동 나타나기
+        textView.becomeFirstResponder()
     }
 
     
@@ -45,9 +46,48 @@ class AddTodoViewController: UIViewController {
     //취소
     @IBAction func cancel(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+        //키보드 자동 사라지기
+        textView.resignFirstResponder()
     }
     
     @IBAction func done(_ sender: UIButton) {
     }
     
 }
+
+
+
+
+extension AddTodoViewController: UITextViewDelegate {
+    //텍스트 뷰에 변화가 일어났을때 작동하는 함수
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        //게다가 완료 버튼이 숨겨져 있다면
+        if doneButton.isHidden {
+            //모든 텍스트를 지우고, 글꼴은 흰색으로
+            textView.text.removeAll()
+            textView.textColor = .white
+            //완료버튼 보이게!
+            doneButton.isHidden = false
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
