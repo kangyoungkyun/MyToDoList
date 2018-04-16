@@ -16,26 +16,41 @@ class TodoTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "todoCell")
     }
 
-
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 10
     }
-
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath)
 
-        // Configure the cell...
-
         return cell
     }
  
-
-
+    //오른쪽에서 왼쪽으로 테이블 셀을 스와이프 했을 때
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(style: .destructive, title: "삭제") { (action, view, completion) in
+            completion(true)
+        }
+        action.image = #imageLiteral(resourceName: "ic_delete.png")
+        action.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [action])
+        
+    }
+    //왼쪽에서 오른쪽으로 테이블 셀을 스와이프 했을 때
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "완료") { (action, view, completion) in
+            completion(true)
+        }
+        action.image = #imageLiteral(resourceName: "ic_done.png")
+        action.backgroundColor = .green
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    
 
     /*
     // MARK: - Navigation

@@ -15,6 +15,8 @@
 		525DA6262084C16900E04244 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 525DA6242084C16900E04244 /* LaunchScreen.storyboard */; };
 		525DA62E2084CAD200E04244 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525DA62D2084CAD200E04244 /* AddTodoViewController.swift */; };
 		525DA6302084CAE400E04244 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525DA62F2084CAE400E04244 /* TodoTableViewController.swift */; };
+		525DA6322084DB3100E04244 /* ic_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 525DA6312084DB3100E04244 /* ic_delete.png */; };
+		525DA6342084DB3B00E04244 /* ic_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 525DA6332084DB3B00E04244 /* ic_done.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		525DA6272084C16900E04244 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		525DA62D2084CAD200E04244 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		525DA62F2084CAE400E04244 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
+		525DA6312084DB3100E04244 /* ic_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_delete.png; sourceTree = "<group>"; };
+		525DA6332084DB3B00E04244 /* ic_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_done.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 		525DA6172084C16900E04244 /* MyToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				525DA6332084DB3B00E04244 /* ic_done.png */,
+				525DA6312084DB3100E04244 /* ic_delete.png */,
 				525DA62D2084CAD200E04244 /* AddTodoViewController.swift */,
 				525DA62F2084CAE400E04244 /* TodoTableViewController.swift */,
 				525DA6182084C16900E04244 /* AppDelegate.swift */,
@@ -134,6 +140,8 @@
 			files = (
 				525DA6262084C16900E04244 /* LaunchScreen.storyboard in Resources */,
 				525DA6232084C16900E04244 /* Assets.xcassets in Resources */,
+				525DA6322084DB3100E04244 /* ic_delete.png in Resources */,
+				525DA6342084DB3B00E04244 /* ic_done.png in Resources */,
 				525DA61E2084C16900E04244 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
