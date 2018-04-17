@@ -169,19 +169,22 @@ class TodoTableViewController: UITableViewController {
             
             if(todo.done){
                 let title = tableView.cellForRow(at: indexPath)?.textLabel?.text
-                tableView.cellForRow(at: indexPath)?.textLabel?.text = title
+                let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: title!)
+                attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
+                tableView.cellForRow(at: indexPath)?.textLabel?.attributedText = attributeString
+                
                 todo.done = false
-                tableView.reloadData()
+                
             }else{
                 let title = tableView.cellForRow(at: indexPath)?.textLabel?.text
                 let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: title!)
                 attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
                 tableView.cellForRow(at: indexPath)?.textLabel?.attributedText = attributeString
                 todo.done = true
-                tableView.reloadData()
+                
             }
 
-            //self.resultsController.managedObjectContext.delete(todo)
+           
 
             do{
                 //업데이트 후 저장
