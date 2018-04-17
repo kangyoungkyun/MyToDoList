@@ -11,7 +11,6 @@ import CoreData
 //메인 시작점
 class CoredataStack {
     
-    
     //코어 데이터 콘테이너
     var container : NSPersistentContainer {
         print("container - NSPersistentContainer 호출")
@@ -22,7 +21,6 @@ class CoredataStack {
                 return
             }
         }
-        
         return container
     }
     
@@ -31,5 +29,4 @@ class CoredataStack {
         print("managedContext - NSManagedObjectContext 호출")
         return container.viewContext
     }
-    
 }

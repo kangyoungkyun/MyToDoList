@@ -41,19 +41,14 @@ class AddTodoViewController: UIViewController {
         if let todo = todo{
             textView.text = todo.title
             segmentedControl.selectedSegmentIndex = Int(todo.priotity)
-          
         }
-        
-        
         segmentedControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,
                                                          NSAttributedStringKey.font: UIFont(name: "NanumMyeongjoOTF-YetHangul", size: 12) ??
                                                             UIFont.systemFont(ofSize: 30)], for: UIControlState())
         
-        
-
     }
     
-    
+    //
     @objc func keyboardWillShow(with notification: Notification){
         let key = "UIKeyboardFrameEndUserInfoKey"
         guard let keyboardFrame = notification.userInfo?[key] as? NSValue else { return }
@@ -82,12 +77,15 @@ class AddTodoViewController: UIViewController {
         if let todo = self.todo{
             todo.title = title
             todo.priotity = Int16(segmentedControl.selectedSegmentIndex)
+            todo.done = false
+            
         }else{
             //없다면 추가
             let todo = Todo(context: managedContext)
             todo.title = title
             todo.priotity = Int16(segmentedControl.selectedSegmentIndex)
             todo.date = Date()
+            todo.done = false
         }
 
         do {

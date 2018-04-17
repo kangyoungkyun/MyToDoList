@@ -105,8 +105,19 @@ class TodoTableViewController: UITableViewController {
         cell.contentView.backgroundColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
         cell.textLabel?.font = UIFont(name: "NanumMyeongjoOTF-YetHangul", size: 17.0)
         let todo = resultsController.object(at: indexPath)
-        cell.textLabel?.text = "\(indexPath.row + 1). \(todo.title!)"
+       
         print("중요도 - \(todo.priotity)")
+        print("중요도 - \(todo.done)")
+        
+        if(todo.done){
+          
+            cell.textLabel?.text = "\(todo.title!)"
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: (cell.textLabel?.text)!)
+            attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
+            cell.textLabel?.attributedText = attributeString
+        }else{
+            cell.textLabel?.text = "\(todo.title!)"
+        }
         
         if(todo.priotity == 0){
             cell.detailTextLabel?.text = "☆"
@@ -119,9 +130,6 @@ class TodoTableViewController: UITableViewController {
             cell.detailTextLabel?.font = UIFont(name: "NanumMyeongjoOTF-YetHangul", size: 13.5)
         }
         
-        
-        
-
         return cell
     }
     
@@ -158,19 +166,40 @@ class TodoTableViewController: UITableViewController {
         let action = UIContextualAction(style: .destructive, title: "완료") { (action, view, completion) in
             //코어데이터 업데이트 로직
             let todo = self.resultsController.object(at: indexPath)
-            self.resultsController.managedObjectContext.delete(todo)
             
+            if(todo.done){
+                let title = tableView.cellForRow(at: indexPath)?.textLabel?.text
+                tableView.cellForRow(at: indexPath)?.textLabel?.text = title
+                todo.done = false
+                tableView.reloadData()
+            }else{
+                let title = tableView.cellForRow(at: indexPath)?.textLabel?.text
+                let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: title!)
+                attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
+                tableView.cellForRow(at: indexPath)?.textLabel?.attributedText = attributeString
+                todo.done = true
+                tableView.reloadData()
+            }
+
+            //self.resultsController.managedObjectContext.delete(todo)
+
             do{
                 //업데이트 후 저장
                 try self.resultsController.managedObjectContext.save()
                 //완료
-                completion(true)
+                completion(false)
             }catch{
                 print("delete failed:\(error)")
                 completion(false)
             }
             
+            
+            
         }
+        
+
+        tableView.reloadData()
+        
         action.image = #imageLiteral(resourceName: "ic_done.png")
         action.backgroundColor = UIColor(red:0.77, green:0.88, blue:0.86, alpha:1.0)
         return UISwipeActionsConfiguration(actions: [action])
@@ -179,6 +208,14 @@ class TodoTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        let todo = resultsController.object(at: indexPath)
+        if(todo.done){
+            return
+        }
+            
+        
         performSegue(withIdentifier: "showAddTodo", sender: tableView.cellForRow(at: indexPath))
     }
     

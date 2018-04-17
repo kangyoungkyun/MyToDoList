@@ -16,7 +16,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--TodoList-->
+        <!--오늘할일-->
         <scene sceneID="OM5-je-vSf">
             <objects>
                 <tableViewController id="B5i-j5-euT" customClass="TodoTableViewController" customModule="MyToDoList" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,9 +57,9 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="TodoList" id="9Ip-jQ-kfJ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FfR-SW-soL">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <navigationItem key="navigationItem" title="오늘할일" id="9Ip-jQ-kfJ">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="FfR-SW-soL">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="NhI-1l-1Ac" kind="presentation" identifier="showAddTodo" id="VFb-7s-wAt"/>
                             </connections>
