@@ -9,7 +9,25 @@
 import UIKit
 import CoreData
 class TodoTableViewController: UITableViewController {
-    
+    //글쓰기 플로팅 버튼
+    lazy var writeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 0.8
+        button.frame = CGRect(x: view.frame.width / 2 - 25, y: view.frame.height - 90 , width: 50, height: 50)
+        button.layer.cornerRadius = button.frame.width/2
+        button.clipsToBounds = true
+        button.layer.masksToBounds = true
+        button.setBackgroundImage(#imageLiteral(resourceName: "pen.png"), for: UIControlState())
+        button.addTarget(self, action: #selector(writeActionFlotingButton), for: .touchUpInside)
+        return button
+    }()
+    //플로팅 액션 버튼
+    @objc func writeActionFlotingButton(){
+        performSegue(withIdentifier: "showAddTodo", sender: writeButton)
+        
+
+    }
     //propertis
     var resultsController: NSFetchedResultsController<Todo>!
     let coreDataStack = CoredataStack()
@@ -22,7 +40,7 @@ class TodoTableViewController: UITableViewController {
         let sortDescriptors = NSSortDescriptor(key: "date", ascending: true)
         
         
-        
+        tableView.addSubview(writeButton)
         
         //초기화
         request.sortDescriptors = [sortDescriptors]
@@ -37,7 +55,37 @@ class TodoTableViewController: UITableViewController {
         } catch  {
             print("perform fetch error : \(error)")
         }
+        
+        //네비게잉션 타이틀 바 폰트 사이즈
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedStringKey.foregroundColor: UIColor.black,
+             NSAttributedStringKey.font: UIFont(name: "NanumMyeongjoOTF-YetHangul", size: 21)!]
+    
+        navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedStringKey.foregroundColor: UIColor.black,
+             NSAttributedStringKey.font: UIFont(name: "NanumMyeongjoOTF-YetHangul", size: 30) ??
+                UIFont.systemFont(ofSize: 30)]
+       
+        
+        //네비게이션 바 색깔 변경
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        
+        //테이블 배경 및 뒷배경 흰색 지정
+        tableView.backgroundColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
+        tableView.backgroundView?.backgroundColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
+        
+
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "todoCell")
+    }
+    
+    
+    //글쓰기 플로팅 버튼 함수
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let  off = self.tableView.contentOffset.y
+        writeButton.frame = CGRect(x: view.frame.width / 2 - 25, y: off + (view.frame.height - 135), width: writeButton.frame.size.width, height: writeButton.frame.size.height)
     }
     
     // MARK: - Table view data source
@@ -48,10 +96,37 @@ class TodoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath)
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath)
+        
+       let cell =  UITableViewCell(style: .value1,
+                        reuseIdentifier: "todoCell")
+        
+        cell.backgroundColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
+        cell.contentView.backgroundColor = UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
+        cell.textLabel?.font = UIFont(name: "NanumMyeongjoOTF-YetHangul", size: 17.0)
         let todo = resultsController.object(at: indexPath)
-        cell.textLabel?.text = todo.title
+        cell.textLabel?.text = "\(indexPath.row + 1). \(todo.title!)"
+        print("중요도 - \(todo.priotity)")
+        
+        if(todo.priotity == 0){
+            cell.detailTextLabel?.text = "☆"
+            cell.detailTextLabel?.font = UIFont(name: "NanumMyeongjoOTF-YetHangul", size: 13.5)
+        }else if(todo.priotity == 1){
+            cell.detailTextLabel?.text = "☆☆"
+            cell.detailTextLabel?.font = UIFont(name: "NanumMyeongjoOTF-YetHangul", size: 13.5)
+        }else{
+            cell.detailTextLabel?.text = "☆☆☆"
+            cell.detailTextLabel?.font = UIFont(name: "NanumMyeongjoOTF-YetHangul", size: 13.5)
+        }
+        
+        
+        
+
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 58
     }
     
     //오른쪽에서 왼쪽으로 테이블 셀을 스와이프 했을 때
@@ -74,7 +149,7 @@ class TodoTableViewController: UITableViewController {
             
         }
         action.image = #imageLiteral(resourceName: "ic_delete.png")
-        action.backgroundColor = .red
+        action.backgroundColor = UIColor(red:0.88, green:0.56, blue:0.47, alpha:1.0)
         return UISwipeActionsConfiguration(actions: [action])
         
     }
@@ -97,7 +172,7 @@ class TodoTableViewController: UITableViewController {
             
         }
         action.image = #imageLiteral(resourceName: "ic_done.png")
-        action.backgroundColor = .green
+        action.backgroundColor = UIColor(red:0.77, green:0.88, blue:0.86, alpha:1.0)
         return UISwipeActionsConfiguration(actions: [action])
     }
     
@@ -108,9 +183,13 @@ class TodoTableViewController: UITableViewController {
     }
     
     // MARK: - Navigation
-    
     // 할일 추가할때 코어데이터 초기화 시켜준다.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+
+        if let _ = sender as? UIButton, let vc = segue.destination as? AddTodoViewController{
+            vc.managedContext = resultsController.managedObjectContext
+        }
         
         if let _ = sender as? UIBarButtonItem, let vc = segue.destination as? AddTodoViewController{
             vc.managedContext = resultsController.managedObjectContext
@@ -123,24 +202,28 @@ class TodoTableViewController: UITableViewController {
                 let todo = resultsController.object(at: indexPath)
                 vc.todo = todo
             }
-            
         }
     }
-    
-    
 }
 
 
 
 extension TodoTableViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        print("controllerWillChangeContent")
         tableView.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+         print("controllerDidChangeContent")
         tableView.endUpdates()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    //코어데이터에서 데이터 변경이 일어나면 이곳에서 바로 반응
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
@@ -158,7 +241,7 @@ extension TodoTableViewController: NSFetchedResultsControllerDelegate {
             if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath){
                 print("NSFetched - update")
                 let todo = resultsController.object(at: indexPath)
-                print("title - \(todo.title)")
+                print("title - \(String(describing: todo.title))")
                 cell.textLabel?.text = todo.title
             }
             

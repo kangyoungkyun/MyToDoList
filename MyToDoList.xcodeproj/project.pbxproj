@@ -19,6 +19,8 @@
 		525DA6342084DB3B00E04244 /* ic_done.png in Resources */ = {isa = PBXBuildFile; fileRef = 525DA6332084DB3B00E04244 /* ic_done.png */; };
 		525DA63B2084DBEA00E04244 /* Todos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 525DA6392084DBEA00E04244 /* Todos.xcdatamodeld */; };
 		525DA63D2084DC9A00E04244 /* CoredataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525DA63C2084DC9A00E04244 /* CoredataStack.swift */; };
+		525DA64120858F3C00E04244 /* NanumMyeongjoOTF-YetHangul.otf in Resources */ = {isa = PBXBuildFile; fileRef = 525DA64020858F3800E04244 /* NanumMyeongjoOTF-YetHangul.otf */; };
+		525DA64320859A6600E04244 /* pen.png in Resources */ = {isa = PBXBuildFile; fileRef = 525DA64220859A6600E04244 /* pen.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		525DA6332084DB3B00E04244 /* ic_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_done.png; sourceTree = "<group>"; };
 		525DA63A2084DBEA00E04244 /* Todos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todos.xcdatamodel; sourceTree = "<group>"; };
 		525DA63C2084DC9A00E04244 /* CoredataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataStack.swift; sourceTree = "<group>"; };
+		525DA64020858F3800E04244 /* NanumMyeongjoOTF-YetHangul.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumMyeongjoOTF-YetHangul.otf"; sourceTree = "<group>"; };
+		525DA64220859A6600E04244 /* pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pen.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 		525DA6172084C16900E04244 /* MyToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				525DA64220859A6600E04244 /* pen.png */,
+				525DA64020858F3800E04244 /* NanumMyeongjoOTF-YetHangul.otf */,
 				525DA6382084DBCE00E04244 /* CoreData */,
 				525DA6372084DBBA00E04244 /* Pic */,
 				525DA6362084DBAF00E04244 /* VC */,
@@ -170,9 +176,11 @@
 			files = (
 				525DA6262084C16900E04244 /* LaunchScreen.storyboard in Resources */,
 				525DA6232084C16900E04244 /* Assets.xcassets in Resources */,
+				525DA64320859A6600E04244 /* pen.png in Resources */,
 				525DA6322084DB3100E04244 /* ic_delete.png in Resources */,
 				525DA6342084DB3B00E04244 /* ic_done.png in Resources */,
 				525DA61E2084C16900E04244 /* Main.storyboard in Resources */,
+				525DA64120858F3C00E04244 /* NanumMyeongjoOTF-YetHangul.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

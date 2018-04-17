@@ -27,6 +27,9 @@ class AddTodoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        view.backgroundColor =  UIColor(red:0.98, green:0.98, blue:0.98, alpha:1.0)
+        
         // 키보드 설정.
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(with:)),
@@ -38,8 +41,16 @@ class AddTodoViewController: UIViewController {
         if let todo = todo{
             textView.text = todo.title
             segmentedControl.selectedSegmentIndex = Int(todo.priotity)
-            textView.text = todo.title
+          
         }
+        
+        
+        segmentedControl.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black,
+                                                         NSAttributedStringKey.font: UIFont(name: "NanumMyeongjoOTF-YetHangul", size: 12) ??
+                                                            UIFont.systemFont(ofSize: 30)], for: UIControlState())
+        
+        
+
     }
     
     
@@ -70,7 +81,6 @@ class AddTodoViewController: UIViewController {
         //테이블 뷰에서 넘겨준 데이터가 있으면 수정이고
         if let todo = self.todo{
             todo.title = title
-            
             todo.priotity = Int16(segmentedControl.selectedSegmentIndex)
         }else{
             //없다면 추가
@@ -79,9 +89,7 @@ class AddTodoViewController: UIViewController {
             todo.priotity = Int16(segmentedControl.selectedSegmentIndex)
             todo.date = Date()
         }
-        
-        
-        
+
         do {
             try managedContext.save()
             dismiss(animated: true, completion: nil)
@@ -93,17 +101,14 @@ class AddTodoViewController: UIViewController {
     
 }
 
-
-
-
 extension AddTodoViewController: UITextViewDelegate {
     //텍스트 뷰에 변화가 일어났을때 작동하는 함수
     func textViewDidChangeSelection(_ textView: UITextView) {
         //게다가 완료 버튼이 숨겨져 있다면
         if doneButton.isHidden {
             //모든 텍스트를 지우고, 글꼴은 흰색으로
-            textView.text.removeAll()
-            textView.textColor = .white
+            //textView.text.removeAll()
+            textView.textColor = .black
             //완료버튼 보이게!
             doneButton.isHidden = false
             
@@ -112,20 +117,6 @@ extension AddTodoViewController: UITextViewDelegate {
             })
         }
     }
-    
-    
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
