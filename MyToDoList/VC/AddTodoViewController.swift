@@ -9,9 +9,12 @@
 import UIKit
 import CoreData
 class AddTodoViewController: UIViewController {
-
+    
     //properties
     var managedContext: NSManagedObjectContext!
+    
+    
+    var todo: Todo?
     
     //텍스트뷰 객체
     @IBOutlet weak var textView: UITextView!
@@ -23,7 +26,7 @@ class AddTodoViewController: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // 키보드 설정.
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(with:)),
@@ -31,8 +34,14 @@ class AddTodoViewController: UIViewController {
                                                object: nil)
         //키보드 자동 나타나기
         textView.becomeFirstResponder()
+        //할일 목록 테이블 뷰에서 넣어준 데이터 넣어주기
+        if let todo = todo{
+            textView.text = todo.title
+            segmentedControl.selectedSegmentIndex = Int(todo.priotity)
+            textView.text = todo.title
+        }
     }
-
+    
     
     @objc func keyboardWillShow(with notification: Notification){
         let key = "UIKeyboardFrameEndUserInfoKey"
@@ -58,11 +67,20 @@ class AddTodoViewController: UIViewController {
         guard let title = textView.text, !title.isEmpty else{
             return
         }
+        //테이블 뷰에서 넘겨준 데이터가 있으면 수정이고
+        if let todo = self.todo{
+            todo.title = title
+            
+            todo.priotity = Int16(segmentedControl.selectedSegmentIndex)
+        }else{
+            //없다면 추가
+            let todo = Todo(context: managedContext)
+            todo.title = title
+            todo.priotity = Int16(segmentedControl.selectedSegmentIndex)
+            todo.date = Date()
+        }
         
-        let todo = Todo(context: managedContext)
-        todo.title = title
-        todo.priotity = Int16(segmentedControl.selectedSegmentIndex)
-        todo.date = Date()
+        
         
         do {
             try managedContext.save()
