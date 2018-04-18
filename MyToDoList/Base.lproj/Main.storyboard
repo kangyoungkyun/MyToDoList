@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,7 +15,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--오늘할일-->
+        <!--오늘은 해야지-->
         <scene sceneID="OM5-je-vSf">
             <objects>
                 <tableViewController id="B5i-j5-euT" customClass="TodoTableViewController" customModule="MyToDoList" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,7 +56,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="오늘할일" id="9Ip-jQ-kfJ">
+                    <navigationItem key="navigationItem" title="오늘은 해야지" largeTitleDisplayMode="never" id="9Ip-jQ-kfJ">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="FfR-SW-soL">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>

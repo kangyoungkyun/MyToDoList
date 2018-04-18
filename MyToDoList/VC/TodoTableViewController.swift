@@ -14,7 +14,7 @@ class TodoTableViewController: UITableViewController {
         let button = UIButton(type: .system)
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 0.8
-        button.frame = CGRect(x: view.frame.width / 2 - 25, y: view.frame.height - 90 , width: 50, height: 50)
+        button.frame = CGRect(x: view.frame.width / 2 - 25, y: view.frame.height - 60 , width: 50, height: 50)
         button.layer.cornerRadius = button.frame.width/2
         button.clipsToBounds = true
         button.layer.masksToBounds = true
@@ -106,8 +106,8 @@ class TodoTableViewController: UITableViewController {
         cell.textLabel?.font = UIFont(name: "NanumMyeongjoOTF-YetHangul", size: 17.0)
         let todo = resultsController.object(at: indexPath)
        
-        print("중요도 - \(todo.priotity)")
-        print("중요도 - \(todo.done)")
+        //print("중요도 - \(todo.priotity)")
+        //print("중요도 - \(todo.done)")
         
         if(todo.done){
           
@@ -201,7 +201,7 @@ class TodoTableViewController: UITableViewController {
         }
         
 
-        tableView.reloadData()
+        //tableView.reloadData()
         
         action.image = #imageLiteral(resourceName: "ic_done.png")
         action.backgroundColor = UIColor(red:0.77, green:0.88, blue:0.86, alpha:1.0)
@@ -250,12 +250,12 @@ class TodoTableViewController: UITableViewController {
 
 extension TodoTableViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        print("controllerWillChangeContent")
+        //print("controllerWillChangeContent")
         tableView.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-         print("controllerDidChangeContent")
+        // print("controllerDidChangeContent")
         tableView.endUpdates()
     }
     
@@ -268,20 +268,20 @@ extension TodoTableViewController: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             if let indexPath = newIndexPath {
-                print("NSFetched - insert \(indexPath.row)")
+                //print("NSFetched - insert \(indexPath.row)")
                 tableView.insertRows(at: [indexPath], with: .automatic)
             }
         case .delete :
             if let indexPath = indexPath {
-                print("NSFetched - delete \(indexPath.row)")
+                //print("NSFetched - delete \(indexPath.row)")
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 
             }
         case .update :
             if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath){
-                print("NSFetched - update")
+                //print("NSFetched - update")
                 let todo = resultsController.object(at: indexPath)
-                print("title - \(String(describing: todo.title))")
+                //print("title - \(String(describing: todo.title))")
                 cell.textLabel?.text = todo.title
             }
             
